@@ -53,7 +53,7 @@ then
   fi
 fi
 
-ROOMODES_FILE="config/.roomodes"
+ROOMODES_FILE=".roomodes"
 if [ -f "$ROOMODES_FILE" ]; then
   echo "Processing roomodes from $ROOMODES_FILE"
   
