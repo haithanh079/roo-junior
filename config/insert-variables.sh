@@ -29,19 +29,6 @@ escape_for_sed() {
     echo "$1" | sed 's/[\/&]/\\&/g'
 }
 
-# --- Perform Replacements using sed ---
-find "$ROO_DIR" -type f -name "system-prompt-*" -print0 | while IFS= read -r -d $'\0' file; do
-  echo "Processing: $file"
-  
-  # Basic variables - using sed with escaped strings
-  sed "${SED_IN_PLACE[@]}" "s/OS_PLACEHOLDER/$(escape_for_sed "$OS")/g" "$file"
-  sed "${SED_IN_PLACE[@]}" "s/SHELL_PLACEHOLDER/$(escape_for_sed "$SHELL")/g" "$file"
-  sed "${SED_IN_PLACE[@]}" "s|HOME_PLACEHOLDER|$(escape_for_sed "$HOME")|g" "$file"
-  sed "${SED_IN_PLACE[@]}" "s|WORKSPACE_PLACEHOLDER|$(escape_for_sed "$WORKSPACE")|g" "$file"
-
-  echo "Completed: $file"
-done
-
 # --- Load and process roomodes ---
 if ! command -v jq &> /dev/null
 then
@@ -72,7 +59,7 @@ if [ -f "$ROOMODES_FILE" ]; then
     echo "Creating system prompt file: $SYSTEM_PROMPT_FILE"
     
     # Read the content of the sample system prompt file
-    SAMPLE_PROMPT_FILE="config/.roo/.system-prompt-sample"
+    SAMPLE_PROMPT_FILE=".roo/.system-prompt-sample"
     if [ -f "$SAMPLE_PROMPT_FILE" ]; then
       SAMPLE_PROMPT_CONTENT=$(cat "$SAMPLE_PROMPT_FILE")
       
@@ -95,5 +82,19 @@ if [ -f "$ROOMODES_FILE" ]; then
 else
   echo "Error: Roomodes file not found: $ROOMODES_FILE"
 fi
+
+
+# --- Perform Replacements using sed ---
+find "$ROO_DIR" -type f -name "system-prompt-*" -print0 | while IFS= read -r -d $'\0' file; do
+  echo "Processing: $file"
+  
+  # Basic variables - using sed with escaped strings
+  sed "${SED_IN_PLACE[@]}" "s/OS_PLACEHOLDER/$(escape_for_sed "$OS")/g" "$file"
+  sed "${SED_IN_PLACE[@]}" "s/SHELL_PLACEHOLDER/$(escape_for_sed "$SHELL")/g" "$file"
+  sed "${SED_IN_PLACE[@]}" "s|HOME_PLACEHOLDER|$(escape_for_sed "$HOME")|g" "$file"
+  sed "${SED_IN_PLACE[@]}" "s|WORKSPACE_PLACEHOLDER|$(escape_for_sed "$WORKSPACE")|g" "$file"
+
+  echo "Completed: $file"
+done
 
 echo "Done."
