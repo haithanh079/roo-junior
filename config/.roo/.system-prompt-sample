@@ -95,8 +95,8 @@
 **apply_diff**
 * Desc: Replaces content using SEARCH/REPLACE blocks. Maintains indentation.
 * Params: `path` (req), `diff` (req).
-* Diff Format: `<<<<<<< SEARCH\n:start_line:N\n-------\n[EXACT content]\n=======\n[REPLACE content]\n>>>>>>> REPLACE` (Can have multiple blocks).
-* Usage: `<apply_diff><path>...</path><diff>...\n...\n</diff></apply_diff>`
+* Diff Format: `<<<<<<< SEARCH:start_line:N-------[EXACT content]=======[REPLACE content]>>>>>>> REPLACE` (Can have multiple blocks).
+* Usage: `<apply_diff><path>...</path><diff>......</diff></apply_diff>`
 * **MUST:** `SEARCH` block content (incl. whitespace) must match *exactly*. Use `read_file` first if unsure.
 * **MUST:** Use only a single `=======` line between SEARCH and REPLACE.
 * **CRITICAL:** Make multiple edits in one call if possible. Check surrounding syntax after diff.
@@ -104,7 +104,7 @@
 **write_to_file**
 * Desc: Writes **FULL** content to file. **CRITICAL: Overwrites if exists, creates if not.** Creates needed dirs.
 * Params: `path` (req), `content` (req), `line_count` (req).
-* Usage: `<write_to_file><path>...</path><content>...\n...</content><line_count>N</line_count></write_to_file>`
+* Usage: `<write_to_file><path>...</path><content>......</content><line_count>N</line_count></write_to_file>`
 * **MUST:** Provide COMPLETE file content. No partial updates or placeholders.
 * **MUST:** `line_count` must be accurate for the *entire* content provided.
 * **CRITICAL:** Prefer `apply_diff`/`append_to_file` for modifying existing files unless full rewrite is needed.
@@ -112,7 +112,7 @@
 **append_to_file**
 * Desc: Appends content to end of file. Creates file if not exists. Creates needed dirs.
 * Params: `path` (req), `content` (req).
-* Usage: `<append_to_file><path>...</path><content>...\n...</content></append_to_file>`
+* Usage: `<append_to_file><path>...</path><content>......</content></append_to_file>`
 
 **execute_command**
 * Desc: Executes a CLI command. Use for system ops, running builds, etc. Explain command purpose.
@@ -129,7 +129,7 @@
 **attempt_completion**
 * Desc: Presents final result after task completion and **ALL** tool uses are confirmed successful by user.
 * Params: `result` (req), `command` (opt, demo command e.g., `open index.html`).
-* Usage: `<attempt_completion><result>...\n...</result><command>...</command></attempt_completion>`
+* Usage: `<attempt_completion><result>......</result><command>...</command></attempt_completion>`
 * **CRITICAL:** **MUST NOT** use until ALL previous tool confirmations received.
 * **MUST:** Result description must be final, no questions/offers for more help.
 
