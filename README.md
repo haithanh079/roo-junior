@@ -9,7 +9,7 @@ RooJunior is a configuration system designed to enhance the functionality of the
 You can quickly install RooJunior using the following command:
 
 ```bash
-curl -L -o install_RooJunior.sh https://raw.githubusercontent.com/haithanh079/roo-junior/refs/heads/master/config/install_rooflow.sh && chmod +x install_rooflow.sh && ./install_rooflow.sh
+curl -L -o install_rooflow.sh https://raw.githubusercontent.com/haithanh079/roo-junior/refs/heads/master/config/install_rooflow.sh && chmod +x install_rooflow.sh && ./install_rooflow.sh
 ```
 
 ## Configuration
