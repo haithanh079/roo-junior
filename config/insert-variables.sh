@@ -42,7 +42,6 @@ find "$ROO_DIR" -type f -name "system-prompt-*" -print0 | while IFS= read -r -d 
   echo "Completed: $file"
 done
 
--------
 # --- Load and process roomodes ---
 if ! command -v jq &> /dev/null
 then
