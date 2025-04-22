@@ -1,5 +1,8 @@
 # RooJunior Configuration
 
+**Disclaimer:** This project is forked from RooFlow. Use it with your own risk, especially when doing customizations.
+
+
 ## Description
 
 RooJunior is a configuration system designed to enhance the functionality of the Roo AI assistant. It provides custom modes, configuration scripts, and a memory bank to tailor Roo's behavior to specific tasks and projects. This project includes scripts to install custom Roo instructions and modes, overriding the system instructions.
