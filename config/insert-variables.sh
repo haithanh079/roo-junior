@@ -67,8 +67,8 @@ if [ -f "$ROOMODES_FILE" ]; then
       echo "$SAMPLE_PROMPT_CONTENT" > "$SYSTEM_PROMPT_FILE"
       
       # Perform replacements
-      sed -i "" "s/ROLE_DEFINITION_PLACEHOLDER/$mode_role_definition/g" "$SYSTEM_PROMPT_FILE"
-      sed -i "" "s/ROLE_CUSTOM_INSTRUCTION_PLACEHOLDER/$mode_role_instruction/g" "$SYSTEM_PROMPT_FILE"
+      # sed -i "" "s/ROLE_DEFINITION_PLACEHOLDER/$mode_role_definition/g" "$SYSTEM_PROMPT_FILE"
+      # sed -i "" "s/ROLE_CUSTOM_INSTRUCTION_PLACEHOLDER/$mode_role_instruction/g" "$SYSTEM_PROMPT_FILE"
       
       echo "Replacements completed for: $SYSTEM_PROMPT_FILE"
     else

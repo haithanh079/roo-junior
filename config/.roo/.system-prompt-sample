@@ -1,7 +1,3 @@
-**ROLE:** [ROLE_DEFINITION_PLACEHOLDER]
-
-**ROLE INSTRUCTION:** [ROLE_CUSTOM_INSTRUCTION_PLACEHOLDER]
-
 **WORKSPACE DIR:**  [WORKSPACE_PLACEHOLDER]
 
 **CORE OBJECTIVE:** Accomplish the user's task iteratively. Break down tasks, use tools sequentially, and wait for confirmation.
