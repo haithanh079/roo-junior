@@ -3,7 +3,7 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-echo "--- Starting RooFlow config setup ---"
+echo "--- Starting RooJunior config setup ---"
 
 # Check for Git command
 if ! command -v git &> /dev/null; then
@@ -15,10 +15,10 @@ else
 fi
 
 # Define a temporary directory name for clarity
-CLONE_DIR="RooFlow_temp_$$" # Using $$ for process ID to add uniqueness
+CLONE_DIR="RooJunior_temp_$$" # Using $$ for process ID to add uniqueness
 
 # Clone the repository (shallow clone for efficiency)
-echo "Cloning RooFlow repository into $CLONE_DIR..."
+echo "Cloning RooJunior repository into $CLONE_DIR..."
 git clone --depth 1 https://github.com/haithanh079/roo-junior "$CLONE_DIR"
 
 # --- MODIFIED COPY SECTION START ---
@@ -76,9 +76,9 @@ echo "insert-variables.sh completed successfully. Removing it..."
 rm -f insert-variables.sh
 
 
-echo "Scheduling self-deletion of install_rooflow.sh..."
+echo "Scheduling self-deletion of install_RooJunior.sh..."
 # Use nohup for more robust background execution, redirect output
 nohup bash -c "sleep 1 && rm -f '$0'" > /dev/null 2>&1 &
 
-echo "--- RooFlow config setup complete ---"
+echo "--- RooJunior config setup complete ---"
 exit 0 # Explicitly exit with success code
